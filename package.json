@@ -1,0 +1,35 @@
+{
+  "name": "ogxt-utils",
+  "version": "1.0.0",
+  "description": "OGXT file format utils",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/orfogrammatika/ogxt-utils.git"
+  },
+  "keywords": [
+    "orfogrammatika",
+    "orfogrammka",
+    "litera5",
+    "ogxt",
+    "html",
+    "utils",
+    "converter"
+  ],
+  "author": "Konstantin V. Borisov",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/orfogrammatika/ogxt-utils/issues"
+  },
+  "homepage": "https://github.com/orfogrammatika/ogxt-utils#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "htmlparser2": "^3.9.2"
+  }
+}
