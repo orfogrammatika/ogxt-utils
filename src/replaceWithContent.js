@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 module.exports = function replaceWithContent(/**jQuery | function():jQuery*/$node, /**String=*/selector) {
 
     function getNodes() {

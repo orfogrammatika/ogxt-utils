@@ -1,5 +1,11 @@
+var _ = require('lodash');
+
 function _normalizeText(/**String*/str) {
-    return str.replace(/\s+/g, '');
+    var lines = str.split('\n');
+    lines = _(lines).map(function(line){
+        return line.trim();
+    });
+    return lines.join('\n').replace(/\s+/g, ' ').trim();
 }
 
 /**

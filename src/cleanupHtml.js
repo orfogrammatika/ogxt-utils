@@ -3,6 +3,7 @@ var replaceWithContent = require('./replaceWithContent');
 
 function _cleanupAnnotations(/**jQuery*/$node) {
     replaceWithContent($node, 'span.annotation');
+    replaceWithContent($node, 'span[data-kind][data-annotation][data-annotation-idx]');
 }
 
 function _cleanupScripts(/**jQuery*/$node) {

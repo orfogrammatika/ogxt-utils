@@ -46,7 +46,7 @@ describe('test', function() {
 //
 // function testNormalizeText() {
 //     var src = '  some \n\n\n text   here  \n \n \n\n \n with    spaces \t \r\n';
-//     var test = 'sometextherewithspaces';
+//     var test = 'some text here with spaces';
 //     var result = _normalizeText(src);
 //     if (test != result) {
 //         console.debug('testNormalizeText FAILED!');
