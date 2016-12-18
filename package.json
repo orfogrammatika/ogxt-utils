@@ -30,6 +30,8 @@
     "mocha": "^3.1.2"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.2"
+    "htmlparser2": "^3.9.2",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.2"
   }
 }
