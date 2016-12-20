@@ -1,0 +1,3 @@
+Some text
+with &lt;br/&gt; tags
+in it

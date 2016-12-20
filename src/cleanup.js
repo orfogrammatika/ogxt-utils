@@ -1,4 +1,4 @@
-var $ = require('jquery');
+var $ = (global && global.window ? require('jquery')(global.window) : require('jquery'));
 var replaceWithContent = require('./replaceWithContent');
 
 function _cleanupAnnotations(/**jQuery*/$node) {
@@ -83,20 +83,34 @@ function _cleanupLineBreaks(/**jQuery*/$node) {
     _restorePreContent($node, pre);
 }
 
-/**
- * Cleaning the html removing all styles, empty spans, removing annotations and so on
- * @param {string} html
- * @param {boolean} removeAnnotations
- * @returns {string}
- */
-module.exports = function cleanupHtml(html, removeAnnotations) {
-    var $html = $('<div></div>');
-    $html.html(html);
-    if (removeAnnotations)
+module.exports = {
+    /**
+     * Cleaning the html removing all styles, empty spans, removing annotations and so on
+     * @param {string} html
+     * @param {boolean} removeAnnotations
+     * @returns {string}
+     */
+    html: function (html, removeAnnotations) {
+        var $html = $('<div></div>');
+        $html.html(html);
+        if (removeAnnotations)
+            _cleanupAnnotations($html);
+        _cleanupStyles($html);
+        _cleanupScripts($html);
+        _cleanupEmptySpans($html);
+        _cleanupLineBreaks($html);
+        return $html.html();
+    },
+    /**
+     * Remove all Litera5 annotation spans from the text (good for saving document)
+     *
+     * @param {string} html
+     * @returns {string}
+     */
+    annotations: function (html) {
+        var $html = $('<div></div>');
+        $html.html(html);
         _cleanupAnnotations($html);
-    _cleanupStyles($html);
-    _cleanupScripts($html);
-    _cleanupEmptySpans($html);
-    _cleanupLineBreaks($html);
-    return $html.html();
+        return $html.html();
+    }
 };

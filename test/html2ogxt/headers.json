@@ -1,0 +1,32 @@
+[
+  {
+    "kind": "header",
+    "start": 0,
+    "end": 9
+  },
+  {
+    "kind": "header",
+    "start": 10,
+    "end": 19
+  },
+  {
+    "kind": "header",
+    "start": 20,
+    "end": 29
+  },
+  {
+    "kind": "header",
+    "start": 30,
+    "end": 39
+  },
+  {
+    "kind": "header",
+    "start": 40,
+    "end": 49
+  },
+  {
+    "kind": "header",
+    "start": 50,
+    "end": 59
+  }
+]

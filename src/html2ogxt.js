@@ -1,6 +1,14 @@
 var meta = require('./meta');
+var htmlparser = require('htmlparser2');
+var _ = require('lodash');
 
-module.exports = function(/**string*/html, /**boolean*/withMeta) /**string*/ {
+/**
+ *
+ * @param {string} html
+ * @param {boolean} withoutMeta
+ * @returns {string}
+ */
+module.exports = function(html, withoutMeta) {
     var result = {
         pos: 0,
         startPos: 0,
@@ -8,23 +16,8 @@ module.exports = function(/**string*/html, /**boolean*/withMeta) /**string*/ {
         meta: []
     };
     var nocheck = 0;
-    var parser = new tinymce.html.SaxParser({
-        validate: true,
-
-        comment: function (text) {
-        },
-
-        cdata: function (text) {
-        },
-
-        text: function (text, raw) {
-            if (nocheck == 0) {
-                result.text += text;
-                result.pos += text.length;
-            }
-        },
-
-        start: function (name, attrs, empty) {
+    var parser = new htmlparser.Parser({
+        onopentag: function(name, attrs) {
             function isHidden() {
                 return _(attrs).find(function (o) {
                         return o.name.toLowerCase() == 'data-litera5-hidden';
@@ -58,8 +51,13 @@ module.exports = function(/**string*/html, /**boolean*/withMeta) /**string*/ {
                 }
             }
         },
-
-        end: function (name) {
+        ontext: function(text) {
+            if (nocheck == 0) {
+                result.text += text;
+                result.pos += text.length;
+            }
+        },
+        onclosetag: function(name) {
             if (nocheck > 0) {
                 nocheck -= 1;
             } else {
@@ -88,19 +86,12 @@ module.exports = function(/**string*/html, /**boolean*/withMeta) /**string*/ {
                     result.meta.push(meta);
                 }
             }
-        },
-
-        pi: function (name, text) {
-        },
-
-        doctype: function (text) {
         }
-    }, new tinymce.html.Schema());
-    parser.parse(html);
-
-    if (withMeta) {
+    });
+    parser.write(html);
+    parser.end();
+    if (!withoutMeta) {
         result.text = meta.add(result.text, result.meta);
     }
     return result.text;
 };
-

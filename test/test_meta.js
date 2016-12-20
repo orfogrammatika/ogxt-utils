@@ -1,3 +1,5 @@
+var should = require('chai').should();
+
 var meta = require('../src/meta');
 
 var DELIMITER = '\n------------------------------\n';

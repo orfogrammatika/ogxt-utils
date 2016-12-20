@@ -27,7 +27,9 @@
   "homepage": "https://github.com/orfogrammatika/ogxt-utils#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "require-text": "0.0.1",
+    "test-dom": "^1.0.0"
   },
   "dependencies": {
     "htmlparser2": "^3.9.2",
