@@ -1,7 +1,7 @@
 var _ = require('lodash');
+var htmlparser = require('htmlparser2');
 
 var htmlwriter = require('./htmlwriter');
-var htmlparser = require('htmlparser2');
 
 var model = {};
 
