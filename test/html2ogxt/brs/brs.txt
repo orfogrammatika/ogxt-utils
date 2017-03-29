@@ -1,0 +1,4 @@
+Some text
+with <br/> tags
+in it
+and one more line

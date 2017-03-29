@@ -20,13 +20,13 @@ module.exports = function(html, withoutMeta) {
         onopentag: function(name, attrs) {
             function isHidden() {
                 return _(attrs).find(function (o) {
-                        return o.name.toLowerCase() == 'data-litera5-hidden';
+                        return o && o.name && o.name.toLowerCase() == 'data-litera5-hidden';
                     }) != undefined;
             }
 
             function isNoCheck() {
                 return _(attrs).find(function (o) {
-                        return o.name.toLowerCase() == 'data-litera5-nocheck';
+                        return o && o.name && o.name.toLowerCase() == 'data-litera5-nocheck';
                     }) != undefined;
             }
 
@@ -53,8 +53,9 @@ module.exports = function(html, withoutMeta) {
         },
         ontext: function(text) {
             if (nocheck == 0) {
-                result.text += text;
-                result.pos += text.length;
+                var txt = _.unescape(text).replace(/&nbsp;/g, '\xa0');
+                result.text += txt;
+                result.pos += txt.length;
             }
         },
         onclosetag: function(name) {
