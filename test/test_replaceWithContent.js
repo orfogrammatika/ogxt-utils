@@ -2,7 +2,7 @@ var should = require('chai').should();
 
 require('test-dom');
 
-var $ = require('jquery')(global.window);
+var $ = require('jquery');
 
 var replaceWithContent = require('../src/replaceWithContent');
 

@@ -4,6 +4,7 @@ var parseTitle = require('../src/parseTitle');
 
 describe('parseTitle', function () {
     it('should be implemented', function () {
-        //TODO implement `parseTitle` tests
+        var test = parseTitle('title');
+        test.should.equal('title…');
     });
 });

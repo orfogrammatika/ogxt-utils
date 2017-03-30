@@ -63,7 +63,7 @@ module.exports = {
      * @param {Object} settings Name/value settings object.
      */
     Writer: function(settings) {
-        var html = [], indent, indentBefore, indentAfter, encode, htmlOutput;
+        var html = [], indent, indentBefore, indentAfter, htmlOutput;
 
         settings = settings || {};
         indent = settings.indent;

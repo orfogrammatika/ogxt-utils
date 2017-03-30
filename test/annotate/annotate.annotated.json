@@ -1,0 +1,468 @@
+{
+  "otherErrors" : { },
+  "kinds" : {
+    "mkSpelling" : "орфография",
+    "mkPunctuation" : "пунктуация",
+    "mkGrammar" : "грамматика",
+    "mkSemantic" : "семантика",
+    "mkYo" : "ё"
+  },
+  "annotations" : [ {
+    "position" : [ {
+      "end" : 26,
+      "start" : 17
+    } ],
+    "description" : " возможно, нужно обособить причастный оборот",
+    "suggestion" : " поставьте запятую после вероятного подлежащего <b>ошибки</b>",
+    "id" : 8,
+    "explanation" : " обособляются согласованные распространенные определения, выраженные причастием или прилагательным с зависимыми от них словами и стоящие после определяемого слова <a href=\"https://litera5.ru/library/ogl/b.5.1.1.1.html\" target=\"_blank\">пунктуация 5.1.1.1</a>",
+    "rule" : "b.5.1.1.1",
+    "kind" : "mkPunctuation",
+    "selection" : "выявляемые"
+  }, {
+    "position" : [ {
+      "end" : 26,
+      "start" : 17
+    } ],
+    "description" : " возможно, нужно обособить причастный оборот",
+    "suggestion" : " поставьте запятую после вероятного подлежащего <b>ошибки</b>",
+    "id" : 9,
+    "explanation" : " обособляются согласованные распространенные определения, выраженные причастием или прилагательным с зависимыми от них словами и стоящие после определяемого слова <a href=\"https://litera5.ru/library/ogl/b.5.1.1.1.html\" target=\"_blank\">пунктуация 5.1.1.1</a>",
+    "rule" : "b.5.1.1.1",
+    "kind" : "mkPunctuation",
+    "selection" : "выявляемые"
+  }, {
+    "position" : [ {
+      "end" : 62,
+      "start" : 42
+    } ],
+    "description" : " неверное употребление устойчивого выражения",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Складывается впечатление\">Складывается впечатление</a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"возникает ощущение\">возникает ощущение</a>",
+    "id" : 5,
+    "explanation" : " выражение «Складывается ощущение» является контаминацией двух устойчивых выражений: «складывается впечатление» и «возникает ощущение» <a href=\"https://litera5.ru/library/ogl/i.1.2.4.html\" target=\"_blank\">семантика 1.2.4</a>",
+    "rule" : "i.1.2.4",
+    "kind" : "mkSemantic",
+    "selection" : "Складывается ощущение"
+  }, {
+    "position" : [ {
+      "end" : 78,
+      "start" : 73
+    } ],
+    "description" : " возможно, следует обособить конструкцию",
+    "suggestion" : " если это вводное слово, то его следует обособить",
+    "id" : 33,
+    "explanation" : " <i>вообще</i> может выступать в роли вводного слова, в этом случае оно означает то же, что «вообще говоря»; однако может выступать и в роли члена предложения: если <i>вообще</i> нельзя изъять из предложения без потери смысла, значит, это член предложения и обособлять его нет надобности <a href=\"https://litera5.ru/library/ogl/b.6.1.2.html\" target=\"_blank\">пунктуация 6.1.2</a>",
+    "rule" : "b.6.1.2",
+    "kind" : "mkPunctuation",
+    "selection" : "вообще"
+  }, {
+    "position" : [ {
+      "end" : 90,
+      "start" : 80
+    } ],
+    "description" : " употребление буквы «ё»",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"кремлёвский\">кремлёвский</a>",
+    "id" : 27,
+    "explanation" : " последовательное употребление буквы <b>ё</b> отражает орфоэпическую норму, поэтому такое написание более корректно <a href=\"https://litera5.ru/library/ogl/h.1.1.html\" target=\"_blank\">ё 1.1</a>",
+    "rule" : "h.1.1",
+    "kind" : "mkYo",
+    "selection" : "кремлевский"
+  }, {
+    "position" : [ {
+      "end" : 97,
+      "start" : 92
+    } ],
+    "description" : "ошибка в корне слова",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"проект\">про<u>е</u>кт</a>",
+    "id" : 14,
+    "explanation" : "не в начале корня после согласных обычно пишется буква <i></i><b><i>е</i></b><i></i>; при этом во всех исконно русских словах буква <i></i><b><i>е</i></b><i></i> указывает на мягкость предшествующего согласного, напр.: <i>белый, ветер, словечко</i>; однако в словах иноязычного происхождения, пишущихся с буквой <i></i><b><i>е</i></b><i></i>, предшествующий согласный может произноситься твердо, так, после букв, передающих мягкий согласный, буква <i></i><b><i>е</i></b><i></i> пишется в словах <i>асбест, версия, гетто, деспот, зебра, комета, леди, пионер, абонент, аспект, акварель, сектор, патент, дефект</i> и в ряде других <a href=\"https://litera5.ru/library/ogl/a.1.1.1.4.html\" target=\"_blank\">орфография 1.1.1.4</a>",
+    "rule" : "a.1.1.1.4",
+    "kind" : "mkSpelling",
+    "selection" : "проэкт"
+  }, {
+    "position" : [ {
+      "end" : 128,
+      "start" : 111
+    } ],
+    "description" : " избыточное словосочетание (плеоназм)",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"вакансий\">вакансий</a>, вакантная должность, вакантное место",
+    "id" : 6,
+    "explanation" : " слово «вакансия» происходит от латинского <i>vacans</i> — «пустующий, свободный», поэтому такое сочетание избыточно <a href=\"https://litera5.ru/library/ogl/i.1.2.3.html\" target=\"_blank\">семантика 1.2.3</a>",
+    "rule" : "i.1.2.3",
+    "kind" : "mkSemantic",
+    "selection" : "свободных вакансий"
+  }, {
+    "position" : [ {
+      "end" : 152,
+      "start" : 142
+    } ],
+    "description" : "ошибка в написании приставки",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"безработных\">бе<u>з</u>работных</a>",
+    "id" : 15,
+    "explanation" : "приставки <i>без-</i>, <i>вз-</i>, <i>воз-</i>, <i>из-</i>, <i>низ-</i>, <i>раз-</i> <i>(роз-)</i>, <i>через-</i> <i>(чрез-)</i> пишутся по особому правилу: перед буквами, передающими глухие согласные (<i></i><b><i>к</i></b><i></i>, <i></i><b><i>п</i></b><i></i>, <i></i><b><i>с</i></b><i></i>, <i></i><b><i>т</i></b><i></i>, <i></i><b><i>ф</i></b><i></i>, <i></i><b><i>х</i></b><i></i>, <i></i><b><i>ц</i></b><i></i>, <i></i><b><i>ч</i></b><i></i>, <i></i><b><i>ш</i></b><i></i>, <i></i><b><i>щ</i></b><i></i>), в них пишется буква <i></i><b><i>с</i></b><i></i>, а в остальных случаях – буква <i></i><b><i>з</i></b><i></i>, напр.: <i>бесполезный, воспользоваться, иссохнуть, ниспровергнуть, расхожий, расщепление, чересполосица</i>; но: <i>бездарный, безвольный, безотказный, низвести, разрубить, розыск, чрезмерный</i>. <a href=\"https://litera5.ru/library/ogl/a.1.3.1.4.html\" target=\"_blank\">орфография 1.3.1.4</a>",
+    "rule" : "a.1.3.1.4",
+    "kind" : "mkSpelling",
+    "selection" : "бесработных"
+  }, {
+    "position" : [ {
+      "end" : 170,
+      "start" : 162
+    } ],
+    "description" : "лишний мягкий знак / опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"является\">являе<u>тс</u>я</a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"являться\">явл<u>ят</u>ься</a>",
+    "id" : 16,
+    "explanation" : "необходимо различать написание инфинитива глагола и формы 3-го лица настоящего и будущего времени, ср.: <i>трудно согну</i><b><i>ться</i></b><i></i> – все согну<b>тся</b><i>, он мне нрави</i><b><i>тся</i></b><i></i> – скоро мне будет нрави<b>ться</b><i> кататься на коньках</i>; для проверки можно использовать вопросы: <i></i><b><i>что делать? что сделать?</i></b><i></i> <a href=\"https://litera5.ru/library/ogl/a.1.1.4.4.html\" target=\"_blank\">орфография 1.1.4.4</a>",
+    "rule" : "a.1.1.4.4",
+    "kind" : "mkSpelling",
+    "selection" : "являеться"
+  }, {
+    "position" : [ {
+      "end" : 216,
+      "start" : 210
+    } ],
+    "description" : "возможно, сложная опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"истории\">истории</a>",
+    "id" : 23,
+    "explanation" : " <a href=\"https://litera5.ru/library/ogl/i.1.2.7.html\" target=\"_blank\">семантика 1.2.7</a>",
+    "rule" : "i.1.2.7",
+    "kind" : "mkSemantic",
+    "selection" : "истерии"
+  }, {
+    "position" : [ {
+      "end" : 237,
+      "start" : 218
+    } ],
+    "description" : " неверно употреблена прописная или строчная буква",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Второй мировой войны\">Второй <u>м</u>ировой <u>в</u>ойны</a>",
+    "id" : 13,
+    "explanation" : " в названиях исторических эпох и событий, памятных дат, календарных периодов и праздников с прописной буквы пишется первое слово <a href=\"https://litera5.ru/library/ogl/a.4.4.html\" target=\"_blank\">орфография 4.4</a>",
+    "rule" : "a.4.4",
+    "kind" : "mkSpelling",
+    "selection" : "Второй Мировой Войны"
+  }, {
+    "position" : [ {
+      "end" : 246,
+      "start" : 241
+    } ],
+    "description" : "отсутствует двойная согласная в корне слова / опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Процесс\">Проце<u>сс</u></a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Провес\">Про<u>в</u>ес</a>",
+    "id" : 17,
+    "explanation" : "двойное <i></i><b><i>с</i></b><i></i> пишется в заимствованном суффиксе <i>-есс (а)</i>, напр.: <i>поэтесса (от поэт), патронесса, критикесса</i>; двойное <i></i><b><i>т</i></b><i></i> пишется в заимствованном суффиксе <i>-етт (а)</i>, <i>-етто</i> (в музыкальных терминах): <i>симфониетта (от симфония), оперетта, ариетта, канцонетта, аллегретто, ларгетто, группетто</i> <a href=\"https://litera5.ru/library/ogl/a.1.3.6.11.html\" target=\"_blank\">орфография 1.3.6.11</a>",
+    "rule" : "a.1.3.6.11",
+    "kind" : "mkSpelling",
+    "selection" : "Процес"
+  }, {
+    "position" : [ {
+      "end" : 273,
+      "start" : 253
+    } ],
+    "description" : " возможно, ошибочное раздельное написание",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"совершенно непростой\">совершенно н<u>еп</u>ростой</a>",
+    "id" : 2,
+    "explanation" : " с прилагательными отрицание <i></i><b><i>не</i></b><i></i> пишется слитно, если при нём имеются слова со значением степени проявления признака, подчеркивающие утверждение; однако такие слова, как <i>абсолютно, совершенно</i>, могут употребляться в сочетаниях этого типа (подчеркивая утверждение) и при словах, пишущихся с <i></i><b><i>не</i></b><i></i> раздельно (усиливая отрицание), напр.: <i>совершенно не старый</i> (возможно синонимичное сочетание <i>вовсе не старый</i>) <a href=\"https://litera5.ru/library/ogl/a.3.7.1.4.4.html\" target=\"_blank\">орфография 3.7.1.4.4</a>",
+    "rule" : "a.3.7.1.4.4",
+    "kind" : "mkSpelling",
+    "selection" : "совершенно не простой"
+  }, {
+    "position" : [ {
+      "end" : 302,
+      "start" : 295
+    } ],
+    "description" : " возможно, ошибочное раздельное написание",
+    "suggestion" : " напишите слитно «<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"вслепую\"><u>вс</u>лепую</a>», если имеется в виду наречие в значении «ничего не видя», «не глядя на что-либо»",
+    "id" : 3,
+    "explanation" : " в данном случае может писаться наречие (отвечает на вопрос <i>как?</i>) <a href=\"https://litera5.ru/library/ogl/a.3.5.1.1.html\" target=\"_blank\">орфография 3.5.1.1</a>",
+    "rule" : "a.3.5.1.1",
+    "kind" : "mkSpelling",
+    "selection" : "в слепую"
+  }, {
+    "position" : [ {
+      "end" : 332,
+      "start" : 306
+    } ],
+    "description" : "возможно, в написании имени собственного допущена ошибка — ошибка в инициалах; ",
+    "suggestion" : " <a href=\"http://yandex.ru/yandsearch?text=владимир владимирович пумин&lr=65\" target=\"_blank\">спросить у Яндекса</a><br><a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Владимир Владимирович Путин\">Владимир Владимирович Пу<u>т</u>ин</a> (российский государственный и политический деятель; второй и четвёртый  президент Российской Федерации)",
+    "id" : 30,
+    "explanation" : "сложные собственные имена следует писать согласно справочнику <a href=\"https://litera5.ru/library/ogl/i.1.4.html\" target=\"_blank\">семантика 1.4</a>",
+    "rule" : "i.1.4",
+    "kind" : "mkSemantic",
+    "selection" : "Владимир Владимирович Пумин"
+  }, {
+    "position" : [ {
+      "end" : 332,
+      "start" : 328
+    } ],
+    "description" : "неизвестное слово",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Путин\">Пу<u>т</u>ин</a>",
+    "id" : 18,
+    "explanation" : "написание слова ошибочно, или оно не зафиксировано в словаре системы <a href=\"https://litera5.ru/library/ogl/a.8.1.html\" target=\"_blank\">орфография 8.1</a>",
+    "rule" : "a.8.1",
+    "kind" : "mkSpelling",
+    "selection" : "Пумин"
+  }, {
+    "position" : [ {
+      "end" : 357,
+      "start" : 343
+    } ],
+    "description" : " неверный выбор слова",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"к родным пенатам\">к родным пенатам</a>",
+    "id" : 7,
+    "explanation" : " поскольку «пенаты» — это античные божества дома, слово требует перед собой предлога «к» <a href=\"https://litera5.ru/library/ogl/i.1.2.5.html\" target=\"_blank\">семантика 1.2.5</a>",
+    "rule" : "i.1.2.5",
+    "kind" : "mkSemantic",
+    "selection" : "в родные пенаты"
+  }, {
+    "position" : [ {
+      "end" : 420,
+      "start" : 415
+    } ],
+    "description" : "возможно, слово «закона» не согласовано с предшествующим предлогом <b>согласно</b>",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"закону\">закон<u>у</u></a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"законам\">закона<u>м</u></a>",
+    "id" : 32,
+    "explanation" : "предлог <b>согласно</b> требует после себя дательного падежа <a href=\"https://litera5.ru/library/ogl/c.2.4.3.2.html\" target=\"_blank\">грамматика 2.4.3.2</a>",
+    "rule" : "c.2.4.3.2",
+    "kind" : "mkGrammar",
+    "selection" : "закона"
+  }, {
+    "position" : [ {
+      "end" : 483,
+      "start" : 472
+    } ],
+    "description" : " неверное употребление предлога",
+    "suggestion" : " <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"по окончании\">по окончани<u>и</u></a>",
+    "id" : 12,
+    "explanation" : " предлог «по» с предложным падежом выражает значение «после чего-нибудь» <a href=\"https://litera5.ru/library/ogl/c.2.4.2.1.html\" target=\"_blank\">грамматика 2.4.2.1</a>",
+    "rule" : "c.2.4.2.1",
+    "kind" : "mkGrammar",
+    "selection" : "по окончанию"
+  }, {
+    "position" : [ {
+      "end" : 502,
+      "start" : 497
+    } ],
+    "description" : " возможно, ошибочное раздельное написание",
+    "suggestion" : " замените на «<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Чтобы\">Чт<u>об</u>ы</a>», если <i></i><b><i>бы</i></b><i></i> нельзя опустить без изменения смысла предложения",
+    "id" : 4,
+    "explanation" : " союз <i></i><b><i>чтобы</i></b><i></i> пишется слитно, его следует отличать от местоимения «что» с частицей <i></i><b><i>бы</i></b><i></i> <a href=\"https://litera5.ru/library/ogl/a.3.11.html\" target=\"_blank\">орфография 3.11</a>",
+    "rule" : "a.3.11",
+    "kind" : "mkSpelling",
+    "selection" : "Что бы"
+  }, {
+    "position" : [ {
+      "end" : 514,
+      "start" : 507
+    } ],
+    "description" : " возможно, ошибочное написание частиц <i></i><b><i>не</i></b><i></i> и <i></i><b><i>ни</i></b><i></i>",
+    "suggestion" : " напишите «<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"ни делал\">н<u>и</u> делал</a>», если ранее имеется в виду раздельное написание «что бы», а не союз <i></i><b><i>чтобы</i></b><i></i>",
+    "id" : 0,
+    "explanation" : " в данном случае частица <i></i><b><i>ни</i></b><i></i> в придаточном предложении примыкает к союзу и усиливает утверждение <a href=\"https://litera5.ru/library/ogl/a.1.2.9.5.html\" target=\"_blank\">орфография 1.2.9.5</a>",
+    "rule" : "a.1.2.9.5",
+    "kind" : "mkSpelling",
+    "selection" : "не делал"
+  }, {
+    "position" : [ {
+      "end" : 563,
+      "start" : 554
+    } ],
+    "description" : " возможно, ошибка в глагольном окончании",
+    "suggestion" : " убедитесь, что здесь используется глагол в личной форме, иначе замените на «<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"озадачиться\">озадачит<u>ь</u>ся</a>»",
+    "id" : 1,
+    "explanation" : " буква <i></i><b><i>ь</i></b><i></i> пишется в неопределённой форме глагола (если к глаголу можно задать вопрос <b>что делать?</b>) <a href=\"https://litera5.ru/library/ogl/a.1.1.4.4.html\" target=\"_blank\">орфография 1.1.4.4</a>",
+    "rule" : "a.1.1.4.4",
+    "kind" : "mkSpelling",
+    "selection" : "озадачится"
+  }, {
+    "position" : [ {
+      "end" : 608,
+      "start" : 604
+    } ],
+    "description" : " возможно, следует обособить конструкцию",
+    "suggestion" : " если это вводное слово, то его следует обособить",
+    "id" : 34,
+    "explanation" : " <i>видно</i> может выступать в роли вводного слова, в этом случае оно означает то же, что «наверное, вероятно, по-видимому»; однако может выступать и в роли члена предложения: если <i>видно</i> нельзя изъять из предложения без потери смысла, значит, это член предложения и обособлять его нет надобности <a href=\"https://litera5.ru/library/ogl/b.6.1.2.html\" target=\"_blank\">пунктуация 6.1.2</a>",
+    "rule" : "b.6.1.2",
+    "kind" : "mkPunctuation",
+    "selection" : "видно"
+  }, {
+    "position" : [ {
+      "end" : 623,
+      "start" : 609
+    } ],
+    "description" : " лишняя запятая",
+    "suggestion" : " удалите запятую перед <b>как</b>",
+    "id" : 35,
+    "explanation" : " обороты с союзом <i></i><b><i>как</i></b><i></i> не выделяются запятыми, если оборот имеет характер устойчивого сочетания <a href=\"https://litera5.ru/library/ogl/b.5.8.10.html\" target=\"_blank\">пунктуация 5.8.10</a>",
+    "rule" : "b.5.8.10",
+    "kind" : "mkPunctuation",
+    "selection" : ", как на ладони"
+  }, {
+    "position" : [ {
+      "end" : 662,
+      "start" : 645
+    } ],
+    "description" : " пропущены запятые",
+    "suggestion" : " поставьте запятые перед и после вводного слова «как это ни странно»",
+    "id" : 36,
+    "explanation" : " вводные слова и сочетания слов отделяются на письме запятыми <a href=\"https://litera5.ru/library/ogl/b.6.1.1.html\" target=\"_blank\">пунктуация 6.1.1</a>",
+    "rule" : "b.6.1.1",
+    "kind" : "mkPunctuation",
+    "selection" : "как это ни странно"
+  }, {
+    "position" : [ {
+      "end" : 727,
+      "start" : 721
+    } ],
+    "description" : "пропущен мягкий знак",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"друзьями\">друз<u>ь</u>ями</a>",
+    "id" : 19,
+    "explanation" : "во всех случаях, когда не пишется разделительный <i>ъ</i>, после согласных перед буквами <i></i><b><i>я</i></b><i></i>, <i></i><b><i>ю</i></b><i></i>, <i></i><b><i>ё</i></b><i></i>, <i></i><b><i>е</i></b><i></i>, <i></i><b><i>и</i></b><i></i>, передающими сочетания <i></i><b><i>j</i></b><i></i> с гласными, пишется разделительный <i></i><b><i>ь</i></b><i></i> <a href=\"https://litera5.ru/library/ogl/a.1.1.4.1.html\" target=\"_blank\">орфография 1.1.4.1</a>",
+    "rule" : "a.1.1.4.1",
+    "kind" : "mkSpelling",
+    "selection" : "друзями"
+  }, {
+    "position" : [ {
+      "end" : 759,
+      "start" : 742
+    } ],
+    "description" : "возможно, в написании имени собственного допущена ошибка — пропущен дефис; ",
+    "suggestion" : " <a href=\"http://yandex.ru/yandsearch?text=франкфурт на майне&lr=65\" target=\"_blank\">спросить у Яндекса</a><br><a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Франкфурт-на-Майне\">Франкфурт<u>-</u>на<u>-</u>Майне</a> ( крупнейший город земли Гессен и пятый по величине в Германии)",
+    "id" : 31,
+    "explanation" : "сложные собственные имена следует писать согласно справочнику <a href=\"https://litera5.ru/library/ogl/i.1.4.html\" target=\"_blank\">семантика 1.4</a>",
+    "rule" : "i.1.4",
+    "kind" : "mkSemantic",
+    "selection" : "Франкфурт на Майне"
+  }, {
+    "position" : [ {
+      "end" : 782,
+      "start" : 773
+    } ],
+    "description" : "возможно, сложная опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"космический\">космический</a>",
+    "id" : 24,
+    "explanation" : " <a href=\"https://litera5.ru/library/ogl/i.1.2.7.html\" target=\"_blank\">семантика 1.2.7</a>",
+    "rule" : "i.1.2.7",
+    "kind" : "mkSemantic",
+    "selection" : "комический"
+  }, {
+    "position" : [ {
+      "end" : 805,
+      "start" : 801
+    } ],
+    "description" : "отсутствует двойная согласная на стыке корня и суффикса / опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"лунную\">лу<u>нн</u>ую</a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"лузную\">лу<u>з</u>ную</a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"луну\">лун<u>у</u></a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"луню\">лу<u>ню</u></a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"лучную\">лу<u>ч</u>ную</a>",
+    "id" : 20,
+    "explanation" : "двойное <i></i><b><i>н</i></b><i></i> и двойное <i></i><b><i>с</i></b><i></i> пишутся на стыке производящей основы и суффикса, если основа кончается, а суффикс начинается одной и той же согласной <i></i><b><i>н</i></b><i></i> или <i></i><b><i>с</i></b><i></i>: <b>(а)</b> в словах с суффиксами <i>-н (ый, ой)</i>, напр.: <i>длинный</i> (от <i>длина</i>), <i>старинный</i> (<i>старина</i>); <b>(б)</b> в словах с суффиксами <i>-ск (ий)</i>, напр.: <i>матросский</i> (от <i>матрос</i>), <i>русский (Русь)</i> <a href=\"https://litera5.ru/library/ogl/a.1.3.6.3.html\" target=\"_blank\">орфография 1.3.6.3</a>",
+    "rule" : "a.1.3.6.3",
+    "kind" : "mkSpelling",
+    "selection" : "луную"
+  }, {
+    "position" : [ {
+      "end" : 841,
+      "start" : 831
+    } ],
+    "description" : " возможно, нужно обособить причастный оборот",
+    "suggestion" : " поставьте запятую перед вероятным сказуемым <b>будут</b>",
+    "id" : 11,
+    "explanation" : " обособляются согласованные распространенные определения, выраженные причастием или прилагательным с зависимыми от них словами и стоящие после определяемого слова <a href=\"https://litera5.ru/library/ogl/b.5.1.1.1.html\" target=\"_blank\">пунктуация 5.1.1.1</a>",
+    "rule" : "b.5.1.1.1",
+    "kind" : "mkPunctuation",
+    "selection" : "приезжающих"
+  }, {
+    "position" : [ {
+      "end" : 841,
+      "start" : 831
+    } ],
+    "description" : " возможно, нужно обособить причастный оборот",
+    "suggestion" : " поставьте запятую перед вероятным сказуемым <b>будут</b>",
+    "id" : 10,
+    "explanation" : " обособляются согласованные распространенные определения, выраженные причастием или прилагательным с зависимыми от них словами и стоящие после определяемого слова <a href=\"https://litera5.ru/library/ogl/b.5.1.1.1.html\" target=\"_blank\">пунктуация 5.1.1.1</a>",
+    "rule" : "b.5.1.1.1",
+    "kind" : "mkPunctuation",
+    "selection" : "приезжающих"
+  }, {
+    "position" : [ {
+      "end" : 917,
+      "start" : 909
+    } ],
+    "description" : "ошибка в корне слова / опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"подбирать\">подб<u>и</u>рать</a>, <a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"подбегать\">подбе<u>г</u>ать</a>",
+    "id" : 21,
+    "explanation" : "в корнях <i>бер- – бир-, дер- – дир-, мер- – мир-, пер- – пир-, тер- – тир-, блест- – блист-, жег- – жиг-, стел- – стил-, чет- – чит-</i> пишется <i></i><b><i>и</i></b><i></i>, если дальше следует суффикс <i>-а-</i>: <i>собирать, задирать, замирать, запирать, стирать, блистать, сжигать, вычитать, расстилать</i>; в противном случае пишется <i></i><b><i>е</i></b><i></i>: <i>беру, деру, умереть, запереть, стереть, блестеть, выжегший, вычет, расстелить</i>; исключения: <i>сочетать, сочетание</i> <a href=\"https://litera5.ru/library/ogl/a.1.2.2.2.html\" target=\"_blank\">орфография 1.2.2.2</a>",
+    "rule" : "a.1.2.2.2",
+    "kind" : "mkSpelling",
+    "selection" : "подберать"
+  }, {
+    "position" : [ {
+      "end" : 968,
+      "start" : 959
+    } ],
+    "description" : "возможно, сложная опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"пастельных\">пастельных</a>",
+    "id" : 25,
+    "explanation" : " <a href=\"https://litera5.ru/library/ogl/i.1.2.7.html\" target=\"_blank\">семантика 1.2.7</a>",
+    "rule" : "i.1.2.7",
+    "kind" : "mkSemantic",
+    "selection" : "постельных"
+  }, {
+    "position" : [ {
+      "end" : 996,
+      "start" : 987
+    } ],
+    "description" : "возможно, сложная опечатка",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"постельное\">постельное</a>",
+    "id" : 26,
+    "explanation" : " <a href=\"https://litera5.ru/library/ogl/i.1.2.7.html\" target=\"_blank\">семантика 1.2.7</a>",
+    "rule" : "i.1.2.7",
+    "kind" : "mkSemantic",
+    "selection" : "пастельное"
+  }, {
+    "position" : [ {
+      "end" : 1008,
+      "start" : 1004
+    } ],
+    "description" : " пропущена запятая",
+    "suggestion" : " поставьте запятую перед частицей «и всё»",
+    "id" : 37,
+    "explanation" : " частица <i></i><b><i>и всё</i></b><i></i> употребляется в конце предложения или части сложного предложения для указания на простоту или достаточность сообщаемого, отсутствия в нём чего-то большего («только и всего»), а также (в том числе в форме «и всё тут») на категорический характер высказывания; перед ней ставится запятая, реже — тире <a href=\"https://litera5.ru/library/ogl/b.6.4.html\" target=\"_blank\">пунктуация 6.4</a>",
+    "rule" : "b.6.4",
+    "kind" : "mkPunctuation",
+    "selection" : "и всё"
+  }, {
+    "position" : [ {
+      "end" : 1014,
+      "start" : 1012
+    } ],
+    "description" : " употребление буквы «ё»",
+    "suggestion" : " вероятно, имелось в виду «<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"Всё\">Всё</a>»",
+    "id" : 28,
+    "explanation" : " в данном контексте наиболее вероятно написание с буквой <b>ё</b> <a href=\"https://litera5.ru/library/ogl/h.1.1.html\" target=\"_blank\">ё 1.1</a>",
+    "rule" : "h.1.1",
+    "kind" : "mkYo",
+    "selection" : "Все"
+  }, {
+    "position" : [ {
+      "end" : 1035,
+      "start" : 1031
+    } ],
+    "description" : "отсутствует двойное <b>с</b> в корне слова",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"России\">Ро<u>сс</u>ии</a>",
+    "id" : 22,
+    "explanation" : "двойное <i></i><b><i>с</i></b><i></i> пишется в слове <i>ссора</i> и его производных: <i>поссориться, перессориться</i> и др., а также в словах с корнем <i>росс</i>, напр.: <i>Россия, россияне, российский, великоросс, малороссиянин</i> <a href=\"https://litera5.ru/library/ogl/a.1.3.6.9.html\" target=\"_blank\">орфография 1.3.6.9</a>",
+    "rule" : "a.1.3.6.9",
+    "kind" : "mkSpelling",
+    "selection" : "Росии"
+  }, {
+    "position" : [ {
+      "end" : 1070,
+      "start" : 1061
+    } ],
+    "description" : "возможно, здесь пропущено слово",
+    "suggestion" : "<a data-kind=\"replace-whole\" title=\"заменить на этот вариант (Alt-Insert)\" data-word=\"взяв с собой\">взяв с собой</a>",
+    "id" : 29,
+    "explanation" : "<a href=\"https://litera5.ru/library/ogl/i.1.2.9.html\" target=\"_blank\">семантика 1.2.9</a>",
+    "rule" : "i.1.2.9",
+    "kind" : "mkSemantic",
+    "selection" : "взяв собой"
+  } ],
+  "kindsOrder" : [ "mkSpelling", "mkGrammar", "mkPunctuation", "mkSemantic", "mkYo" ]
+}

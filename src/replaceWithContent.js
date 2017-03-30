@@ -1,4 +1,4 @@
-var $ = (global && global.window ? require('jquery')(global.window) : require('jquery'));
+var $ = require('jquery');
 var _ = require('lodash');
 
 module.exports = function replaceWithContent(/**jQuery | function():jQuery*/$node, /**String=*/selector) {

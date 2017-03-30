@@ -1,4 +1,6 @@
-var $ = (global && global.window ? require('jquery')(global.window) : require('jquery'));
+var $ = require('jquery');
+var _ = require('lodash');
+
 var replaceWithContent = require('./replaceWithContent');
 
 function _cleanupAnnotations(/**jQuery*/$node) {
@@ -31,9 +33,10 @@ function _cleanupEmptySpans(/**jQuery*/$node) {
 
 function _savePreContent(/**jQuery*/$node) /**Array.<string>*/ {
     return _($node.find('pre')).map(function (el, idx) {
-        $(el).attr('data-temp-pre-index', idx);
-        return $(el).html();
-    });
+        var $el = $(el);
+        $el.attr('data-temp-pre-index', idx);
+        return $el.html();
+    }).value();
 }
 
 function _restorePreContent(/**jQuery*/$node, /**Array.<String>*/pre) {
@@ -41,7 +44,6 @@ function _restorePreContent(/**jQuery*/$node, /**Array.<String>*/pre) {
         var $pre = $($node.find('[data-temp-pre-index]')[0]);
         var idx = $pre.data('temp-pre-index');
         $pre.removeAttr('data-temp-pre-index');
-        console.debug(idx);
         $pre.html(pre[idx]);
     }
 }
@@ -52,6 +54,7 @@ function _addNlAfterTag(/**String*/html, /**String*/tag) /**String*/ {
 }
 
 function _splitLines(/**String*/html) /**String*/ {
+    html = _addNlAfterTag(html, 'pre');
     html = _addNlAfterTag(html, 'h1');
     html = _addNlAfterTag(html, 'h2');
     html = _addNlAfterTag(html, 'h3');

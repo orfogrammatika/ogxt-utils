@@ -1,4 +1,4 @@
-var $ = (global && global.window ? require('jquery')(global.window) : require('jquery'));
+var $ = require('jquery');
 
 /**
  * Parse the text "title" taking first 5 words of text cut it to 40 chars if needed

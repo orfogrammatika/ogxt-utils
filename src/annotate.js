@@ -717,7 +717,7 @@ function _injectAnnotations(html, spans) {
             }
         }
     });
-    parser.parse(html);
+    parser.parseComplete(html);
     return writer.getContent();
 }
 
