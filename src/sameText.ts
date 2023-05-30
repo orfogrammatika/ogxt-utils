@@ -1,10 +1,8 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 function _normalizeText(str: string) {
 	const strLines: string[] = str.split('\n');
-	const lines = _(strLines).map(function (line) {
-		return line.trim();
-	});
+	const lines = _.map(strLines, line => line.trim());
 	return lines.join('\n').replace(/\s+/g, ' ').trim();
 }
 

@@ -1,6 +1,6 @@
 import { metaAdd, Meta } from './meta';
 import { Parser } from 'htmlparser2';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 export function html2ogxt(html: string, withoutMeta?: boolean): string {
 	const result = {

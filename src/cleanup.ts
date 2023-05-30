@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { replaceWithContent } from './replaceWithContent';
 
 function _cleanupAnnotations($node: Element): void {
@@ -27,7 +27,7 @@ function _cleanupEmptySpans($node: Element): void {
 }
 
 function _savePreContent($node: Element): string[] {
-	return _($node.querySelectorAll('pre'))
+	return _.chain($node.querySelectorAll('pre'))
 		.map(function ($el, idx) {
 			$el.setAttribute('data-temp-pre-index', `${idx}`);
 			return $el.innerHTML;

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 /**
  * Makes a name/object map out of an array with names.

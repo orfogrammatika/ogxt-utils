@@ -1,32 +1,7 @@
-import _ from 'lodash';
 import { Parser } from 'htmlparser2';
-import { Writer, Dict } from './htmlwriter';
-
-interface Position {
-	start: number;
-	end: number;
-}
-
-interface Annotation {
-	id: number;
-	kind: string;
-	selection: string;
-	description: string;
-	suggestion: string;
-	suggestionId: number;
-	explanation: string;
-	rule: string;
-	group: string;
-	attrs: string[];
-	position: Position[];
-}
-
-interface Annotations {
-	kinds: {
-		[key: string]: string;
-	};
-	annotations: Annotation[];
-}
+import * as _ from 'lodash';
+import { Dict, Writer } from './htmlwriter';
+import { Annotation, Annotations, Position } from './model';
 
 const Attrs = {
 	Priority: {
@@ -80,18 +55,18 @@ function _getSpans(annotations: Annotation[]): EditorSpan[] {
 	function attrsClasses(attrs: string[]): string {
 		let result = '';
 		if (_.includes(attrs, Attrs.Priority.high))
-			result += ' attr_' + Attrs.Priority.high;
+			result += ` attr_${Attrs.Priority.high}`;
 		return result;
 	}
 
-	_.each(annotations, function (annotation: Annotation, index: number) {
-		_.each(annotation.position, function (position: Position, idx: number) {
+	_.each(annotations, (annotation: Annotation, aidx: number) => {
+		_.each(annotation.position, (position: Position, idx: number) => {
 			result.push({
 				start: position.start,
 				end: position.end + 1,
 				annotations: [
 					{
-						id: index,
+						id: aidx,
 						idx: idx,
 						kind: annotation.kind,
 						group: annotation.group,
@@ -293,7 +268,7 @@ function _intersectSpans(
 	a: EditorSpan,
 	b: EditorSpan
 ): EditorIntersectResult | undefined {
-	let result: EditorIntersectResult | undefined = undefined;
+	let result: EditorIntersectResult | undefined;
 	if (a == b) {
 		console.assert(false, 'a should not be the same as b');
 	} else if (a.end <= b.start) {
@@ -373,6 +348,7 @@ function _intersectAllSpans(
 	let result: EditorSpan[] = [];
 	if (spans.length == 0 && span != null) result.push(span);
 	else {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const res = _intersectSpans(_.head(spans)!, span);
 		const _tail = _.tail(spans);
 		if (res) {
@@ -388,7 +364,7 @@ function _intersectAllSpans(
 
 function _splitSpans(spans: EditorSpan[]): EditorSpan[] {
 	let result: EditorSpan[] = [];
-	_.each(spans, function (span) {
+	_.each(spans, span => {
 		result = _intersectAllSpans(result, span);
 	});
 	return result;
@@ -399,7 +375,7 @@ function _splitSpans(spans: EditorSpan[]): EditorSpan[] {
  *  а затем для каждой группы применяется старый (полный) механизм разбиения
  */
 function _splitSpansEx(spans: EditorSpan[]): EditorSpan[] {
-	spans.sort(function (a, b) {
+	spans.sort((a, b) => {
 		let result = a.start - b.start;
 		if (result == 0) {
 			result = a.end - b.end;
@@ -421,35 +397,61 @@ function _splitSpansEx(spans: EditorSpan[]): EditorSpan[] {
 	}
 	if (lastGroup.length > 0) groups.push(lastGroup);
 	let result: EditorSpan[] = [];
-	_.each(groups, function (group) {
+	_.each(groups, group => {
 		result = result.concat(_splitSpans(group));
 	});
 	return result;
 }
 
-function _injectAnnotations(html: string, spans: EditorSpan[]): string {
+function _spanClassesVisual(annotation: EditorAnnotation): string {
+	let result = `annotation visible ${annotation.kind}${annotation.classes}`;
+	if (annotation.attr.start) {
+		result += ' start';
+	}
+	if (annotation.attr.end) {
+		result += ' end';
+	}
+	if (annotation.attr.large) {
+		result += ' large';
+	} else {
+		result += ' small';
+	}
+	return result;
+}
+
+const voidTags: Record<string, boolean> = {
+	area: true,
+	base: true,
+	br: true,
+	col: true,
+	embed: true,
+	hr: true,
+	img: true,
+	input: true,
+	keygen: true,
+	link: true,
+	meta: true,
+	param: true,
+	source: true,
+	track: true,
+	wbr: true,
+};
+
+function _noVoidTag(name: string): boolean {
+	return !voidTags[name.toLowerCase()];
+}
+
+function _injectAnnotations(
+	html: string,
+	spans: EditorSpan[],
+	spanClasses: (annotation: EditorAnnotation) => string
+): string {
 	let pos = 0;
 	let wSpans = spans;
 	const writer = Writer({ indent: true });
 
-	function spanClasses(annotation: EditorAnnotation) {
-		let result = 'annotation visible ' + annotation.kind + annotation.classes;
-		if (annotation.attr.start) {
-			result += ' start';
-		}
-		if (annotation.attr.end) {
-			result += ' end';
-		}
-		if (annotation.attr.large) {
-			result += ' large';
-		} else {
-			result += ' small';
-		}
-		return result;
-	}
-
 	function writeStartSpan(span: EditorSpan): void {
-		_(span.annotations).each(function (annotation) {
+		_.forEach(span.annotations, annotation => {
 			const attrs: Dict<string> = {
 				'data-annotation': `${annotation.id}`,
 				'data-annotation-idx': `${annotation.idx}`,
@@ -464,7 +466,7 @@ function _injectAnnotations(html: string, spans: EditorSpan[]): string {
 	}
 
 	function writeEndSpan(span: EditorSpan): void {
-		_(span.annotations).each(() => {
+		_.forEach(span.annotations, () => {
 			writer.end('span');
 		});
 	}
@@ -474,12 +476,14 @@ function _injectAnnotations(html: string, spans: EditorSpan[]): string {
 	let nocheck = 0;
 
 	const parser = new Parser({
-		ontext: function (text) {
+		// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+		ontext(text) {
 			if (nocheck == 0) {
 				let txt = text;
 				while (txt.length > 0) {
 					let start = pos;
 					let end = pos + txt.length;
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 					let span: EditorSpan = _.head(wSpans)!;
 
 					const writeText = (text: string): void => {
@@ -607,7 +611,8 @@ function _injectAnnotations(html: string, spans: EditorSpan[]): string {
 				writer.text(text);
 			}
 		},
-		onopentag: function (name, attrs) {
+		// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+		onopentag(name, attrs) {
 			const isHidden = (): boolean => {
 				return (
 					_.findIndex(
@@ -640,14 +645,15 @@ function _injectAnnotations(html: string, spans: EditorSpan[]): string {
 				}
 			}
 		},
-		onclosetag: function (name) {
-			writer.end(name);
+		// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+		onclosetag(name) {
+			if (_noVoidTag(name)) {
+				writer.end(name);
+			}
 			if (nocheck > 0) {
 				nocheck -= 1;
-			} else {
-				if (_(stack).last() == name.toLowerCase()) {
-					stack.pop();
-				}
+			} else if (_.last(stack) == name.toLowerCase()) {
+				stack.pop();
 			}
 		},
 	});
@@ -655,8 +661,13 @@ function _injectAnnotations(html: string, spans: EditorSpan[]): string {
 	return writer.getContent();
 }
 
+/**
+ * Добавляет в `html` аннотации `annotations` в виде span-ов со специфическими стилями для последующей визуализации отчёта
+ * @param html
+ * @param annotations
+ */
 export function annotate(html: string, annotations: Annotations): string {
 	let spans = _getSpans(annotations.annotations);
 	spans = _splitSpansEx(spans);
-	return _injectAnnotations(html, spans);
+	return _injectAnnotations(html, spans, _spanClassesVisual);
 }
