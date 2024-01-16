@@ -46,7 +46,8 @@
   "dependencies": {
     "htmlparser2": "^7.2.0",
     "js-logger": "^1.6.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "runes": "^0.4.3"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
@@ -54,6 +55,7 @@
     "@types/jsdom": "^16.2.14",
     "@types/lodash": "^4.14.180",
     "@types/node": "^12.20.11",
+    "@types/runes": "^0.4.3",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "codecov": "^3.8.1",

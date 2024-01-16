@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as runes from 'runes';
 
 /**
  * Parse the text "title" taking first 5 words of text cut it to 40 chars if needed
@@ -12,13 +13,6 @@ export function parseTitle(text: string): string {
 		.replace(/[\n\t\s]+/g, ' ')
 		.split(' ');
 	arr = _.filter(arr, a => !_.isEmpty(a.trim()));
-	let res = '';
-	for (let i = 0; i < Math.min(5, arr.length); i++) {
-		if (i > 0) {
-			res += ' ';
-		}
-		res += arr[i];
-	}
-	res = res.substring(0, 40) + '…';
-	return res;
+	const res = arr.slice(0, 5).join(' ');
+	return runes.substr(res, 0, 40) + '…';
 }
