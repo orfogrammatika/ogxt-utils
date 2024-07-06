@@ -15,9 +15,12 @@ const Attrs = {
 
 interface EditorAnnotation {
 	id: number;
+	alternateId?: string;
+	tuid?: string;
 	idx: number;
 	kind: string;
 	group: string;
+	intensity?: number;
 	classes: string;
 	attr: {
 		start: boolean;
@@ -70,6 +73,9 @@ function _getSpans(annotations: Annotation[]): EditorSpan[] {
 						idx: idx,
 						kind: annotation.kind,
 						group: annotation.group,
+						intensity: annotation.intensity,
+						tuid: annotation.tuid,
+						alternateId: annotation.alternateId,
 						classes: attrsClasses(annotation.attrs),
 						attr: {
 							start: true,
@@ -441,6 +447,10 @@ function _noVoidTag(name: string): boolean {
 	return !voidTags[name.toLowerCase()];
 }
 
+function _normalizeIntensity(intensity: string) {
+	return '' + Math.round(parseFloat(intensity) * 20) * 5;
+}
+
 function _injectAnnotations(
 	html: string,
 	spans: EditorSpan[],
@@ -451,14 +461,25 @@ function _injectAnnotations(
 	const writer = Writer({ indent: true });
 
 	function writeStartSpan(span: EditorSpan): void {
-		_.forEach(span.annotations, annotation => {
+		_.forEach(span.annotations, (annotation: any) => {
 			const attrs: Dict<string> = {
 				'data-annotation': `${annotation.id}`,
-				'data-annotation-idx': `${annotation.idx}`,
 				class: spanClasses(annotation),
 				'data-kind': annotation.kind,
 			};
-			if (annotation.group) {
+			if (!_.isNil(annotation.idx)) {
+				attrs['data-annotation-idx'] = `${annotation.idx}`;
+			}
+			if (!_.isNil(annotation.alternateId)) {
+				attrs['data-alternate-annotation'] = `${annotation.alternateId}`;
+			}
+			if (!_.isNil(annotation.tuid)) {
+				attrs['data-tuid'] = annotation.tuid;
+			}
+			if (!_.isNil(annotation.intensity)) {
+				attrs['data-intensity'] = _normalizeIntensity(annotation.intensity);
+			}
+			if (!_.isNil(annotation.group)) {
 				attrs['data-group'] = annotation.group;
 			}
 			writer.start('span', attrs);
