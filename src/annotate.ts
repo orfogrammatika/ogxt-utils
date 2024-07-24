@@ -1,7 +1,8 @@
-import { Parser } from 'htmlparser2';
 import * as _ from 'lodash';
+import { HtmlParser } from './HtmlParser';
 import { Dict, Writer } from './htmlwriter';
 import { Annotation, Annotations, Position } from './model';
+import { isTagHidden, isTagNoCheck } from './utils';
 
 const Attrs = {
 	Priority: {
@@ -496,7 +497,7 @@ function _injectAnnotations(
 
 	let nocheck = 0;
 
-	const parser = new Parser({
+	const parser = new HtmlParser({
 		// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 		ontext(text) {
 			if (nocheck == 0) {
@@ -585,6 +586,16 @@ function _injectAnnotations(
 							 * |----text----|
 							 * |------span------|
 							 */
+							console.log(
+								'txt:',
+								`"${txt}"`,
+								'start:',
+								start,
+								'end:',
+								end,
+								'span:',
+								span
+							);
 							splitSpan();
 							writeSpan();
 						} else if (start < span.start && end > span.end) {
@@ -608,6 +619,16 @@ function _injectAnnotations(
 							 * |----text----|
 							 *     |----span----|
 							 */
+							console.log(
+								'txt:',
+								`"${txt}"`,
+								'start:',
+								start,
+								'end:',
+								end,
+								'span:',
+								span
+							);
 							writeTxt();
 							splitSpan();
 							writeSpan();
@@ -635,21 +656,11 @@ function _injectAnnotations(
 		// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 		onopentag(name, attrs) {
 			const isHidden = (): boolean => {
-				return (
-					_.findIndex(
-						_.keys(attrs),
-						a => a.toLowerCase() === 'data-litera5-hidden'
-					) > -1
-				);
+				return isTagHidden(attrs);
 			};
 
 			const isNoCheck = (): boolean => {
-				return (
-					_.findIndex(
-						_.keys(attrs),
-						a => a.toLowerCase() === 'data-litera5-nocheck'
-					) > -1
-				);
+				return isTagNoCheck(attrs);
 			};
 
 			writer.start(name, attrs);

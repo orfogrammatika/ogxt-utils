@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { escapeAttribute, escapeText } from 'entities';
 
 export interface Dict<T> {
 	[key: string]: T;
@@ -51,6 +52,7 @@ const baseEntities: Dict<string> = {
 	'<': '&lt;',
 	'>': '&gt;',
 	'&': '&amp;',
+	'\u0160': '&ngsp',
 	'\u0060': '&#96;',
 };
 
@@ -62,12 +64,10 @@ const baseEntities: Dict<string> = {
  * @return Entity encoded text.
  */
 function encode(text: string, attr?: boolean): string {
-	return text.replace(
-		attr ? attrsCharsRegExp : textCharsRegExp,
-		function (chr) {
-			return baseEntities[chr] ?? chr;
-		}
-	);
+	if (attr) {
+		return escapeAttribute(text);
+	}
+	return escapeText(text);
 }
 
 export type WriterSettings = {

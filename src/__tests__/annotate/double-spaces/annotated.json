@@ -1,0 +1,39 @@
+{
+	"otherErrors": {},
+	"collocations": {
+		"ngram": 0,
+		"bigram": 0,
+		"trigram": 0
+	},
+	"kinds": {
+		"mkTypography": "типографика"
+	},
+	"water": {
+		"content": 0
+	},
+	"version": "72.16.0.2",
+	"annotations": [
+		{
+			"position": [
+				{
+					"end": 5,
+					"start": 4
+				}
+			],
+			"description": "лишние пробелы",
+			"suggestion": "<a data-kind=\"replace-whole\" title=\"Заменить (Alt + Insert)\" data-word=\" \">удалите один пробел</a>",
+			"id": 0,
+			"explanation": "в текстах обычно не допускается наличие двух и более пробелов подряд <a href=\"http://orfogrammka.ru/OGL/f.6.1.html\" target=\"_blank\">типографика 6.1</a>",
+			"tuid": "#wdtl5x",
+			"rule": "f.6.1",
+			"kind": "mkTypography",
+			"selection": "  ",
+			"attrs": []
+		}
+	],
+	"flesch": {
+		"value": 114.085,
+		"comment": "Безумно высокий уровень удобочитаемости (понимают даже дети)"
+	},
+	"kindsOrder": ["mkTypography"]
+}

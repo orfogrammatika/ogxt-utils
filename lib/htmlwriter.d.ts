@@ -2,74 +2,34 @@ export interface Dict<T> {
     [key: string]: T;
 }
 /**
+ * Makes a name/object map out of an array with names.
+ *
+ * @param items Items to make map out of.
+ * @param delim Optional delimiter to split string by.
+ * @param map Optional map to add items to.
+ * @return Name/value map of items.
+ */
+export declare function makeMap(items: string | string[], delim?: string, map?: Dict<boolean>): Dict<boolean>;
+export declare type WriterSettings = {
+    indent?: boolean;
+    indent_before?: string[];
+    indent_after?: string[];
+    element_format?: string;
+};
+export declare type IWriter = {
+    start: (name: string, attrs?: Dict<string>, empty?: boolean) => void;
+    end: (name: string) => void;
+    text: (text: string, raw?: boolean) => void;
+    cdata: (text: string) => void;
+    comment: (text: string) => void;
+    pi: (name: string, text: string) => void;
+    doctype: (text: string) => void;
+    reset: () => void;
+    getContent: () => string;
+};
+/**
  * Constructs a new Writer instance.
  *
  * @param {Object} settings Name/value settings object.
  */
-export declare function Writer(settings?: any): {
-    /**
-     * Writes the a start element such as <p id="a">.
-     *
-     * @method start
-     * @param name Name of the element.
-     * @param attrs Optional attribute array or undefined if it hasn't any.
-     * @param empty Optional empty state if the tag should end like <br />.
-     */
-    start: (name: string, attrs?: Dict<string> | undefined, empty?: boolean | undefined) => void;
-    /**
-     * Writes the a end element such as </p>.
-     *
-     * @method end
-     * @param name Name of the element.
-     */
-    end: (name: string) => void;
-    /**
-     * Writes a text node.
-     *
-     * @method text
-     * @param text String to write out.
-     * @param raw Optional raw state if true the contents wont get encoded.
-     */
-    text: (text: string, raw?: boolean | undefined) => void;
-    /**
-     * Writes a cdata node such as <![CDATA[data]]>.
-     *
-     * @method cdata
-     * @param text String to write out inside the cdata.
-     */
-    cdata: (text: string) => void;
-    /**
-     * Writes a comment node such as <!-- Comment -->.
-     *
-     * @method cdata
-     * @param text String to write out inside the comment.
-     */
-    comment: (text: string) => void;
-    /**
-     * Writes a PI node such as <?xml attr="value" ?>.
-     *
-     * @param name Name of the pi.
-     * @param text String to write out inside the pi.
-     */
-    pi: (name: string, text: string) => void;
-    /**
-     * Writes a doctype node such as <!DOCTYPE data>.
-     *
-     * @method doctype
-     * @param text String to write out inside the doctype.
-     */
-    doctype: (text: string) => void;
-    /**
-     * Resets the internal buffer if one wants to reuse the writer.
-     *
-     * @method reset
-     */
-    reset: () => void;
-    /**
-     * Returns the contents that got serialized.
-     *
-     * @method getContent
-     * @return HTML contents that got written down.
-     */
-    getContent: () => string;
-};
+export declare function Writer(settings?: WriterSettings): IWriter;

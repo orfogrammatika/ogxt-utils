@@ -1,33 +1,24 @@
 import { metaAdd, Meta } from './meta';
-import { Parser } from 'htmlparser2';
 import * as _ from 'lodash';
+import { isTagHidden, isTagNoCheck } from './utils';
+import { HtmlParser } from './HtmlParser';
 
 export function html2ogxt(html: string, withoutMeta?: boolean): string {
 	const result = {
 		pos: 0,
 		startPos: 0,
-		text: '',
+		text: [] as string[],
 		meta: [] as Meta[],
 	};
 	let nocheck = 0;
-	const parser = new Parser({
+	const parser = new HtmlParser({
 		onopentag: function (name: string, attrs) {
 			function isHidden() {
-				return (
-					_.findIndex(
-						_.keys(attrs),
-						a => a.toLowerCase() === 'data-litera5-hidden'
-					) > -1
-				);
+				return isTagHidden(attrs);
 			}
 
 			function isNoCheck() {
-				return (
-					_.findIndex(
-						_.keys(attrs),
-						a => a.toLowerCase() === 'data-litera5-nocheck'
-					) > -1
-				);
+				return isTagNoCheck(attrs);
 			}
 
 			if (nocheck > 0 || isHidden() || isNoCheck()) {
@@ -45,7 +36,7 @@ export function html2ogxt(html: string, withoutMeta?: boolean): string {
 						result.startPos = result.pos;
 						break;
 					case 'br':
-						result.text += '\n';
+						result.text.push('\n');
 						result.pos += 1;
 						break;
 				}
@@ -54,7 +45,7 @@ export function html2ogxt(html: string, withoutMeta?: boolean): string {
 		ontext: function (text) {
 			if (nocheck == 0) {
 				const txt = _.unescape(text).replace(/&nbsp;/g, '\xa0');
-				result.text += txt;
+				result.text.push(txt);
 				result.pos += txt.length;
 			}
 		},
@@ -89,10 +80,10 @@ export function html2ogxt(html: string, withoutMeta?: boolean): string {
 			}
 		},
 	});
-	parser.write(html);
-	parser.end();
+	parser.parseComplete(html);
+	let res = result.text.join('');
 	if (!withoutMeta) {
-		result.text = metaAdd(result.text, result.meta);
+		res = metaAdd(res, result.meta);
 	}
-	return result.text;
+	return res;
 }

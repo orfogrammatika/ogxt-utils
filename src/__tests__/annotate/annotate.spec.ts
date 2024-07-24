@@ -15,6 +15,7 @@ function mkTest(name: string) {
 describe('annotate', () => {
 	describe('should just work', () => {
 		it('complex', mkTest('complex'));
+		it('double-spaces', mkTest('double-spaces'));
 	});
 	describe('should not modify input html', () => {
 		const annotations: Annotations = {
