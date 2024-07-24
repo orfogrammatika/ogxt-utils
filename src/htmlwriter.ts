@@ -1,5 +1,9 @@
 import * as _ from 'lodash';
 
+export interface Dict<T> {
+	[key: string]: T;
+}
+
 /**
  * Makes a name/object map out of an array with names.
  *
@@ -8,16 +12,15 @@ import * as _ from 'lodash';
  * @param map Optional map to add items to.
  * @return Name/value map of items.
  */
-function makeMap(
+export function makeMap(
 	items: string | string[],
 	delim?: string,
-	map?: Dict<any>
-): Dict<any> {
+	map?: Dict<boolean>
+): Dict<boolean> {
 	let i: number;
 
 	let aitems: string[] = [];
 
-	items = items || [];
 	delim = delim || ',';
 
 	if (typeof items === 'string') {
@@ -30,7 +33,7 @@ function makeMap(
 
 	i = aitems.length;
 	while (i--) {
-		map[aitems[i]] = {};
+		map[aitems[i]] = true;
 	}
 
 	return map;
@@ -40,10 +43,6 @@ const attrsCharsRegExp =
 	/[&<>"\u0060\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
 const textCharsRegExp =
 	/[<>&\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-
-export interface Dict<T> {
-	[key: string]: T;
-}
 
 // Raw entities
 const baseEntities: Dict<string> = {
@@ -71,18 +70,37 @@ function encode(text: string, attr?: boolean): string {
 	);
 }
 
+export type WriterSettings = {
+	indent?: boolean;
+	indent_before?: string[];
+	indent_after?: string[];
+	element_format?: string;
+};
+
+export type IWriter = {
+	start: (name: string, attrs?: Dict<string>, empty?: boolean) => void;
+	end: (name: string) => void;
+	text: (text: string, raw?: boolean) => void;
+	cdata: (text: string) => void;
+	comment: (text: string) => void;
+	pi: (name: string, text: string) => void;
+	doctype: (text: string) => void;
+	reset: () => void;
+	getContent: () => string;
+};
+
 /**
  * Constructs a new Writer instance.
  *
  * @param {Object} settings Name/value settings object.
  */
-export function Writer(settings?: any) {
+export function Writer(settings?: WriterSettings): IWriter {
 	settings = settings ?? {};
 
 	const html: string[] = [];
-	const indent: string = settings.indent;
-	const indentBefore = makeMap(settings.indent_before || '');
-	const indentAfter = makeMap(settings.indent_after || '');
+	const indent = settings.indent;
+	const indentBefore = makeMap(settings.indent_before ?? []);
+	const indentAfter = makeMap(settings.indent_after ?? []);
 	const htmlOutput = settings.element_format === 'html';
 
 	return {
@@ -182,7 +200,7 @@ export function Writer(settings?: any) {
 		 * @param text String to write out inside the comment.
 		 */
 		comment: function (text: string): void {
-			html.push('<!--', text, '-->');
+			html.push('<!-- ', text, ' -->');
 		},
 
 		/**
@@ -210,7 +228,7 @@ export function Writer(settings?: any) {
 		 * @param text String to write out inside the doctype.
 		 */
 		doctype: function (text: string): void {
-			html.push('<!DOCTYPE', text, '>', indent ? '\n' : '');
+			html.push('<!DOCTYPE ', text, '>', indent ? '\n' : '');
 		},
 
 		/**

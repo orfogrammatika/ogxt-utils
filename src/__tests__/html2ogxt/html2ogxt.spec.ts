@@ -21,4 +21,6 @@ describe('html2ogxt', () => {
 	it('brs', mkTest('brs'));
 	it('nbsps', mkTest('nbsps'));
 	it('complex', mkTest('complex'));
+	it('nocheck', mkTest('nocheck'));
+	it('hidden', mkTest('hidden'));
 });

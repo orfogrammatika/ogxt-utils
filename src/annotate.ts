@@ -464,12 +464,12 @@ function _injectAnnotations(
 		_.forEach(span.annotations, (annotation: any) => {
 			const attrs: Dict<string> = {
 				'data-annotation': `${annotation.id}`,
-				class: spanClasses(annotation),
-				'data-kind': annotation.kind,
 			};
 			if (!_.isNil(annotation.idx)) {
 				attrs['data-annotation-idx'] = `${annotation.idx}`;
 			}
+			attrs['class'] = spanClasses(annotation);
+			attrs['data-kind'] = annotation.kind;
 			if (!_.isNil(annotation.alternateId)) {
 				attrs['data-alternate-annotation'] = `${annotation.alternateId}`;
 			}

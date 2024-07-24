@@ -3,12 +3,18 @@ import { annotate } from '../../index';
 import { Annotations } from '../../model';
 import { requireText } from '../utils';
 
-describe('annotate', () => {
-	it('should be implemented', () => {
-		const src = requireText('./annotate.in.html', require);
-		const annotations = require('./annotate.annotated.json');
+function mkTest(name: string) {
+	return () => {
+		const src = requireText(`./${name}/in.html`, require);
+		const annotations = require(`./${name}/annotated.json`);
 		const test = annotate(src, annotations);
-		expect(test).toEqual(requireText('./annotate.out.html', require));
+		expect(test).toEqual(requireText(`./${name}/out.html`, require));
+	};
+}
+
+describe('annotate', () => {
+	describe('should just work', () => {
+		it('complex', mkTest('complex'));
 	});
 	describe('should not modify input html', () => {
 		const annotations: Annotations = {
