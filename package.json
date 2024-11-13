@@ -1,6 +1,6 @@
 {
 	"name": "ogxt-utils",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "OGXT file format utils",
 	"files": ["!lib/__tests__/**/*", "lib/**/*"],
 	"main": "lib/index.js",
