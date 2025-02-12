@@ -14,7 +14,7 @@ const Attrs = {
 	},
 };
 
-interface EditorAnnotation {
+export interface EditorAnnotation {
 	id: number;
 	alternateId?: string;
 	tuid?: string;
@@ -30,10 +30,24 @@ interface EditorAnnotation {
 	};
 }
 
-interface EditorSpan {
+export interface EditorSpan {
 	start: number;
 	end: number;
 	annotations: EditorAnnotation[];
+}
+
+export interface SpanSuggestion {
+	start: number;
+	end: number;
+	suggestions: {
+		annotationId: number,
+		suggestions: {idx: number, value: string}[]
+	}[]
+}
+
+export interface HtmlWithEditorSpan {
+	html: string;
+	spans: EditorSpan[];
 }
 
 interface EditorIntersectResult {
@@ -455,7 +469,8 @@ function _normalizeIntensity(intensity: string) {
 function _injectAnnotations(
 	html: string,
 	spans: EditorSpan[],
-	spanClasses: (annotation: EditorAnnotation) => string
+	spanClasses: (annotation: EditorAnnotation) => string,
+	getSuggestions?: (annotationId: number, start: number, end: number) => { idx: number, value: string }[]
 ): string {
 	let pos = 0;
 	let wSpans = spans;
@@ -471,6 +486,26 @@ function _injectAnnotations(
 			}
 			attrs['class'] = spanClasses(annotation);
 			attrs['data-kind'] = annotation.kind;
+			if (!_.isNil(span.start)) {
+				attrs['data-start'] = `${span.start}`;
+			}
+			if (!_.isNil(span.end)) {
+				attrs['data-end'] = `${span.end}`;
+			}
+			if (getSuggestions) {
+				const suggestions = getSuggestions(annotation.id, span.start, span.end);
+				if (suggestions && suggestions.length) {
+					for (let i = 0; i < suggestions.length; i++) {
+						attrs['data-sexist'] = '1';
+						if (suggestions[i].idx == 0) {
+							attrs['data-suggestion'] = suggestions[0].value;
+						} else {
+							attrs[`data-suggestion-${suggestions[i].idx}`] = suggestions[i].value;
+						}
+
+					}
+				}
+			}
 			if (!_.isNil(annotation.alternateId)) {
 				attrs['data-alternate-annotation'] = `${annotation.alternateId}`;
 			}
@@ -695,11 +730,52 @@ function _injectAnnotations(
 
 /**
  * Добавляет в `html` аннотации `annotations` в виде span-ов со специфическими стилями для последующей визуализации отчёта
+ * При этом возвращает группировки span-ов, чтобы вызывающему коду можно было понять структуру без парсинга html
+ * @param html
+ * @param annotations
+ * @return HtmlWithEditorSpan
+ */
+export function annotate_and_get_html_with_spans(html: string, annotations: Annotations): HtmlWithEditorSpan {
+	let spans = _getSpans(annotations.annotations);
+	spans = _splitSpansEx(spans);
+	return { html: _injectAnnotations(html, spans, _spanClassesVisual), spans: spans };
+}
+
+/**
+ * Добавляет в `html` аннотации `annotations` в виде span-ов со специфическими стилями для последующей визуализации отчёта.
+ * Возвращает только html строку
  * @param html
  * @param annotations
  */
 export function annotate(html: string, annotations: Annotations): string {
+	return annotate_and_get_html_with_spans(html, annotations).html;
+}
+
+/**
+ * Добавляет в `html` аннотации `annotations` в виде span-ов со специфическими стилями для последующей визуализации отчёта
+ * При этом перед формированием html вызывает переданную функцию разбиения совета по span-ам, на которые разбивается аннотация.
+ * Возвращает html строку, там, где совет разбивается и его можно применить по частям, добавляются атрибуты с советами
+ * @param html
+ * @param annotations
+ * @param splitSuggestion
+ */
+export function annotate_with_suggestion(html: string, annotations: Annotations,
+	splitSuggestion: (spans: EditorSpan[], annotations: Annotations) => SpanSuggestion[]): string {
 	let spans = _getSpans(annotations.annotations);
 	spans = _splitSpansEx(spans);
-	return _injectAnnotations(html, spans, _spanClassesVisual);
+	const suggestions = splitSuggestion(spans, annotations);
+
+	const suggestionMap = suggestions.reduce((hashMap, item) => {
+			item.suggestions.forEach(suggestion => {
+				const key = `${suggestion.annotationId}-${item.start}-${item.end}`;
+				hashMap.set(key, suggestion.suggestions);
+			});
+			return hashMap;
+		}, new Map<string, {idx: number, value: string}[]>());
+
+	function getSuggestion(annotationId: number, start: number, end: number) : {idx: number, value: string}[] {
+		const key = `${annotationId}-${start}-${end}`;
+		return suggestionMap.get(key)??[];
+	}
+	return _injectAnnotations(html, spans, _spanClassesVisual, getSuggestion);
 }
