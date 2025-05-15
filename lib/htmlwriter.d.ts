@@ -10,13 +10,13 @@ export interface Dict<T> {
  * @return Name/value map of items.
  */
 export declare function makeMap(items: string | string[], delim?: string, map?: Dict<boolean>): Dict<boolean>;
-export declare type WriterSettings = {
+export type WriterSettings = {
     indent?: boolean;
     indent_before?: string[];
     indent_after?: string[];
     element_format?: string;
 };
-export declare type IWriter = {
+export type IWriter = {
     start: (name: string, attrs?: Dict<string>, empty?: boolean) => void;
     end: (name: string) => void;
     text: (text: string, raw?: boolean) => void;
