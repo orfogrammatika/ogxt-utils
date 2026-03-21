@@ -117,3 +117,6 @@ dist
 
 # Compiled code
 lib/__tests__/
+
+# macos
+*.DS_Store
