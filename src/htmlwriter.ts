@@ -40,22 +40,6 @@ export function makeMap(
 	return map;
 }
 
-const attrsCharsRegExp =
-	/[&<>"\u0060\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-const textCharsRegExp =
-	/[<>&\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-
-// Raw entities
-const baseEntities: Dict<string> = {
-	'"': '&quot;', // Needs to be escaped since the YUI compressor would otherwise break the code
-	"'": '&#39;',
-	'<': '&lt;',
-	'>': '&gt;',
-	'&': '&amp;',
-	'\u0160': '&ngsp',
-	'\u0060': '&#96;',
-};
-
 /**
  * Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.
  *
