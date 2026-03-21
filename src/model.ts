@@ -5,6 +5,7 @@ export interface Position {
 
 export interface Annotation {
 	id: number;
+	idx?: number;
 	alternateId?: string;
 	tuid?: string;
 	kind: string;
