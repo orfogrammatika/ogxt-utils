@@ -63,7 +63,37 @@ function _compareSpans(a: EditorSpan, b: EditorSpan): number {
 	return result;
 }
 
+
+/**
+ * Добавляет idx в аннотации если их нет или они не являются последовательными числами
+ * @param annotations
+ */
+function fixAnnotationsIdx(annotations: Annotation[]) {
+	let startIndex = -1;
+	if(annotations.length > 0) {
+		const ann = annotations[0];
+		startIndex = ann.idx ?? -1;
+	}
+
+	if (startIndex >= 0) {
+		let fixed = true;
+		annotations.forEach((item, index) => {
+			if (item.idx != startIndex + index) {
+				fixed = false;
+			}
+		});
+		if (fixed) {
+			return;
+		}
+	}
+	annotations.forEach((item, index) => {
+		item.idx = index;
+	});
+}
+
 function _getSpans(annotations: Annotation[]): EditorSpan[] {
+	fixAnnotationsIdx(annotations);
+
 	const result: EditorSpan[] = [];
 
 	function isLarge(position: Position): boolean {
@@ -78,13 +108,14 @@ function _getSpans(annotations: Annotation[]): EditorSpan[] {
 	}
 
 	_.each(annotations, (annotation: Annotation, aidx: number) => {
+		const index = annotation.idx ?? aidx;
 		_.each(annotation.position, (position: Position, idx: number) => {
 			result.push({
 				start: position.start,
 				end: position.end + 1,
 				annotations: [
 					{
-						id: aidx,
+						id: index,
 						idx: idx,
 						kind: annotation.kind,
 						group: annotation.group,
